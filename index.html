@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Planos de Saúde</title>
+
+    <script src="/assets/script.js" defer></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="bg-light">
+
+    <div class="container py-5" style="max-width: 800px;">
+        
+        <div class="d-flex justify-content-center align-items-center mb-4"> 
+            <div class="rounded-3 d-flex align-items-center justify-content-center me-3 bg-primary-subtle text-primary" style="width: 60px; height: 60px;">
+                <i class="bi bi-heart-pulse-fill fs-2"></i>
+            </div>
+            <div>
+                <h4 class="mb-0 fw-bold text-dark">Comparador de Planos</h4>
+                <small class="text-muted">Calcule o melhor custo-benefício (Operadora A vs B)</small>
+            </div>
+        </div>
+        
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white"> 
+            <div class="card-body">
+                
+                <form id="form-planos"> 
+                    
+                    <h5 class="fw-bold text-secondary mb-4">Dados do Beneficiário</h5>
+
+                    <div class="mb-3">
+                        <label for="idade" class="form-label fw-semibold text-secondary">Idade (anos)</label>
+                        <input type="number" class="form-control py-2" id="idade" placeholder="Ex: 30" required min="0">
+                    </div>
+
+                    <div class="row"> 
+                        <div class="col-md-6 mb-3">
+                            <label for="peso" class="form-label fw-semibold text-secondary">Peso (kg)</label>
+                            <input type="number" class="form-control py-2" id="peso" placeholder="Ex: 75.5" step="0.1" required min="0">
+                        </div>
+                        <div class="col-md-6 mb-3"> 
+                            <label for="altura" class="form-label fw-semibold text-secondary">Altura (m)</label>
+                            <input type="number" class="form-control py-2" id="altura" placeholder="Ex: 1.75" step="0.01" required min="0">
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-2" role="alert">
+                        <i class="bi bi-info-circle me-1"></i>
+                        O IMC e o Fator de Comorbidade serão calculados automaticamente.
+                    </div>
+
+                    <button type="button" id="btn-calcular" class="btn btn-primary w-100 py-2 fw-bold rounded-3 mt-3" data-bs-toggle="modal" data-bs-target="#resultadoModal">
+                        Calcular e Comparar Planos
+                    </button>
+
+                    <div class="modal fade" id="resultadoModal" tabindex="-1" aria-labelledby="resultadoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 fw-bold" id="resultadoModalLabel">Extrato de Planos</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                
+                                <div id="resumo-imc" class="mb-4 p-3 bg-light rounded border text-center">
+                                    <span class="text-muted">Preencha os dados para ver o resultado.</span>
+                                </div>
+
+                                <h6 class="fw-bold text-primary">Comparativo de Preços</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover text-center align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Plano</th>
+                                                <th class="text-primary">Operadora A</th>
+                                                <th class="text-success">Operadora B</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabela-corpo">
+                                            <tr>
+                                                <td class="fw-semibold">Básico</td>
+                                                <td id="preco-a-basico">R$ --</td>
+                                                <td id="preco-b-basico">R$ --</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Standard</td>
+                                                <td id="preco-a-standard">R$ --</td>
+                                                <td id="preco-b-standard">R$ --</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Premium</td>
+                                                <td id="preco-a-premium">R$ --</td>
+                                                <td id="preco-b-premium">R$ --</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="recomendacao-final" class="alert alert-success mt-3 fw-bold text-center" role="alert">
+                                    O plano mais vantajoso aparecerá aqui.
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
