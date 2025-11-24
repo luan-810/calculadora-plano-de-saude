@@ -24,7 +24,7 @@
                 <i class="bi bi-heart-pulse-fill fs-2"></i>
             </div>
             <div>
-                <h4 class="mb-0 fw-bold text-dark">Comparador de Planos</h4>
+                <h1 class="mb-0 fw-bold text-dark">Comparador de Planos</h1>
                 <small class="text-muted">Calcule o melhor custo-benefício (Operadora A vs B)</small>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 
                 <form id="form-planos"> 
                     
-                    <h5 class="fw-bold text-secondary mb-4">Dados do Beneficiário</h5>
+                    <h3 class="fw-bold text-secondary mb-4">Dados do Beneficiário</h3>
 
                     <div class="mb-3">
                         <label for="idade" class="form-label fw-semibold text-secondary">Idade (anos)</label>
@@ -64,16 +64,12 @@
                     <div class="modal fade" id="resultadoModal" tabindex="-1" aria-labelledby="resultadoModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 fw-bold" id="resultadoModalLabel">Extrato de Planos</h1>
+                                <h2 class="modal-title fs-5 fw-bold" id="resultadoModalLabel">Extrato de Planos</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                
-                                <div id="resumo-imc" class="mb-4 p-3 bg-light rounded border text-center">
-                                    <span class="text-muted">Preencha os dados para ver o resultado.</span>
-                                </div>
 
-                                <h6 class="fw-bold text-primary">Comparativo de Preços</h6>
+                                <h4 class="fw-bold text-primary">Comparativo de Preços</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover text-center align-middle">
                                         <thead class="table-light">
@@ -103,14 +99,18 @@
                                     </table>
                                 </div>
 
-                                <div id="recomendacao-final" class="alert alert-success mt-3 fw-bold text-center" role="alert">
-                                    O plano mais vantajoso aparecerá aqui.
+                                </div> <div id="aviso-negativo" class="alert alert-warning d-none mt-1 mx-5" role="alert">
+                                    <p>
+                                        <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                                        <strong>Atenção:</strong> O valor negativo no <em>Premium B</em> ocorre devido à fórmula de cálculo baseada no IMC baixo(Regra da Operação).
+                                    </p>
                                 </div>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            </div>
+                                <div class="alert alert-success mt-3 fw-bold text-center mx-5" role="alert">
+                                    <p id="recomendacao-final">
+                                        O plano mais vantajoso aparecerá aqui.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

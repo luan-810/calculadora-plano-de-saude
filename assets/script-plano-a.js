@@ -16,16 +16,24 @@ const planoA = (() => {
     let premiumA = 0;
 
     function calcular() {
-        imc = peso.value / (altura.value ** 2);
+        imc = peso.value / (altura.value * altura.value);
 
-        basicoA = (100 + idade.value * 10 * (imc / 10)).toFixed(2);
-        standardA = ((150 + idade.value * 15) * (imc / 10)).toFixed(2);
-        premiumA = ((200 - imc * 10 + idade.value * 20) * (imc / 10)).toFixed(2);
+        basicoA = (100 + (idade.value * 10 * (imc / 10)));
+        standardA = ((150 + (idade.value * 15)) * (imc / 10));
+        premiumA = ((200 - (imc * 10) + (idade.value * 20)) * (imc / 10));
 
-        camposPlanoA.basico.textContent = `R$ ${basicoA}`;
-        camposPlanoA.standard.textContent = `R$ ${standardA}`;
-        camposPlanoA.premium.textContent = `R$ ${premiumA}`;
+        camposPlanoA.basico.textContent = `R$ ${basicoA.toFixed(2)}`;
+        camposPlanoA.standard.textContent = `R$ ${standardA.toFixed(2)}`;
+        camposPlanoA.premium.textContent = `R$ ${premiumA.toFixed(2)}`;
     }
 
-    return {calcular};
+    function getPrecos(){
+        return{
+            basico: basicoA,
+            standard: standardA,
+            premium: premiumA
+        }
+    }
+
+    return {calcular, getPrecos};
 })();
