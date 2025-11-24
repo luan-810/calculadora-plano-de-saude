@@ -1,47 +1,31 @@
-const idade = document.getElementById("idade");
-const peso = document.getElementById("peso");
-const altura = document.getElementById("altura");
+const planoA = (() => {
 
-const btnCalcular = document.getElementById("btn-calcular");
+    const idade = document.getElementById("idade");
+    const peso = document.getElementById("peso");
+    const altura = document.getElementById("altura");
 
-const precoBasicoA = document.getElementById("preco-a-basico");
-const precoStandardA = document.getElementById("preco-a-standard");
-const precoPremiumA = document.getElementById("preco-a-premium");
+    const camposPlanoA = {
+        basico: document.getElementById("preco-a-basico"),
+        standard: document.getElementById("preco-a-standard"),
+        premium: document.getElementById("preco-a-premium")
+    };
 
-let imc = 0;
-function calcularIMC(){
-    imc = peso.value / (altura.value * altura.value);
-}
+    let imc = 0;
+    let basicoA = 0;
+    let standardA = 0;
+    let premiumA = 0;
 
+    function calcular() {
+        imc = peso.value / (altura.value ** 2);
 
+        basicoA = (100 + idade.value * 10 * (imc / 10)).toFixed(2);
+        standardA = ((150 + idade.value * 15) * (imc / 10)).toFixed(2);
+        premiumA = ((200 - imc * 10 + idade.value * 20) * (imc / 10)).toFixed(2);
 
-let basicoA = 0;
-function planoBasicoA(){
-    basicoA = 100 + (idade.value * 10 * (imc / 10));
-    basicoA = basicoA.toFixed(2);
-}
-let standartA = 0;
-function planoStandardA(){
-    standartA = (150 + (idade.value * 15)) * (imc /10);
-    standartA = standartA.toFixed(2);
-}
-let premiumA = 0;
-function planoPremiumA(){
-    premiumA =  (200 - (imc * 10) + (idade.value * 20)) * (imc / 10);
-    premiumA = premiumA.toFixed(2);
-}
+        camposPlanoA.basico.textContent = `R$ ${basicoA}`;
+        camposPlanoA.standard.textContent = `R$ ${standardA}`;
+        camposPlanoA.premium.textContent = `R$ ${premiumA}`;
+    }
 
-function atualizarModal(){
-    precoBasicoA.textContent = `R$ ${basicoA}`;
-    precoStandardA.textContent = `R$ ${standartA}`;
-    precoPremiumA.textContent = `R$ ${premiumA}`;
-}
-
-btnCalcular.addEventListener("click", calcularPlanoSaudeA);
-function calcularPlanoSaudeA(){
-    calcularIMC();
-    planoBasicoA();
-    planoStandardA();
-    planoPremiumA();
-    atualizarModal();
-}
+    return {calcular};
+})();
