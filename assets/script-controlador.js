@@ -26,7 +26,7 @@ document.getElementById("btn-calcular").addEventListener("click", () => {
         contadorA++
     };
     
-    if (contadorA > contadorB){
+    if (contadorA < contadorB){
         melhorOferta.innerHTML = `A melhor oferta no cenário atual é o <strong>Plano B</strong>!`;
     }else{
         melhorOferta.innerHTML = `A melhor oferta no cenário atual é o <strong>Plano A</strong>!`;
